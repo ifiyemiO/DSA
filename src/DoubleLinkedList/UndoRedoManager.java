@@ -56,7 +56,8 @@ public class UndoRedoManager<T> {
     }
 
     //Redo Operation
-    
+    private void redo() {
+    }
 
     public static void main(String[] args) {
         UndoRedoManager<String> undoRedoManager = new UndoRedoManager<>();
@@ -76,8 +77,11 @@ public class UndoRedoManager<T> {
         undoRedoManager.undo();
         System.out.println("Current State: " + undoRedoManager.currentState.state);
 
-
+        System.out.println("Current State: " + undoRedoManager.currentState.state);
+        undoRedoManager.redo();
 
 
     }
+
+
 }

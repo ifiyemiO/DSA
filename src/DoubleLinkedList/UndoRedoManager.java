@@ -38,6 +38,9 @@ public class UndoRedoManager<T> {
         return currentState.state;
     }
 
+
+
+
     //perform an operation
     public void  addState (T newState) {
         //create a new node for the new task
@@ -56,8 +59,24 @@ public class UndoRedoManager<T> {
     }
 
     //Redo Operation
-    private void redo() {
+    public T redo() {
+        if (currentState == null) {
+            System.out.println("No state to redo");
+            return null;
+        }
+
+        // Get the next state
+        Node nextState = currentState.next;
+        if (nextState == null) {
+            System.out.println("No state to redo");
+            return null;
+        } else {
+            // Update the current state to the next state
+            currentState = nextState;
+        }
+        return currentState.state;
     }
+
 
     public static void main(String[] args) {
         UndoRedoManager<String> undoRedoManager = new UndoRedoManager<>();
@@ -77,11 +96,17 @@ public class UndoRedoManager<T> {
         undoRedoManager.undo();
         System.out.println("Current State: " + undoRedoManager.currentState.state);
 
+
         System.out.println("Current State: " + undoRedoManager.currentState.state);
         undoRedoManager.redo();
+        System.out.println("Current State: " + undoRedoManager.currentState.state);
+        undoRedoManager.redo();
+        System.out.println("Current State: " + undoRedoManager.currentState.state);
+        undoRedoManager.redo();
+        System.out.println("Current State: " + undoRedoManager.currentState.state);
+        undoRedoManager.redo();
+        System.out.println("Current State: " + undoRedoManager.currentState.state);
 
 
     }
-
-
 }

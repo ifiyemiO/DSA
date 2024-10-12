@@ -11,12 +11,14 @@ public class UndoRedoManager<T> {
         private T state;
         private Node prev;
         private Node next;
+
         private Node (T state) {
             this.state = state;
         }
 
     }
     private Node currentState;
+
     //Undo operation
     public T undo(){
         if (currentState == null){
@@ -54,6 +56,7 @@ public class UndoRedoManager<T> {
     }
 
     //Redo Operation
+    
 
     public static void main(String[] args) {
         UndoRedoManager<String> undoRedoManager = new UndoRedoManager<>();
@@ -72,6 +75,7 @@ public class UndoRedoManager<T> {
         System.out.println("Current State: " + undoRedoManager.currentState.state);
         undoRedoManager.undo();
         System.out.println("Current State: " + undoRedoManager.currentState.state);
+
 
 
 
